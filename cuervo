@@ -1,61 +1,107 @@
 #!/bin/bash
 #        author: eleAche
 #
-#        plantilla para scripts en bash, estilos para el prompt, basta con mencionar la variable correspondiente a cada color
-#        entre llaves y anteponiendo un signo de dollar. ${ VariableDeColor } aparte, solicita root en caso de que sea necesario 
-#        para la ejecucion del script, si no es root, interrumpe la ejecucion; si no existe en el path instala la utilidad; 
-#        prompt personalizado para el atajo ctrl+C; 
+#        plantilla con utilidades para la creacion de scripts
+#        solicita root, autoinstala hacia path, contiene estilos para colorear la terminal, crea un workspace
+#        y al terminar ejecucion lo manda a /dev/null       
+#  
+#       script cuervo es un ejemplo de aplicacion de bash scripting
+#       **solo es compatible con sistemas linux debian y ubuntu**
 #
-#
-
-mkdir .TheMadafackerDeepWeb ; #          [  make
-cp $0 .TheMadafackerDeepWeb/; #             work
-cd .TheMadafackerDeepWeb; #                 space. ] '[ los modales hacen al hombre... ]'
-
-######################           Utilities              ##################
-#       Styles
-redCol="\e[0;31m\033[1m" # rojo         | red---------- -|> 31
-greCol="\e[0;32m\033[1m" # verde        | green-------- -|> 32
-bluCol="\e[0;34m\033[1m" # azul         | blue--------- -|> 34
-yelCol="\e[0;33m\033[1m" # amarillo     | yellow------- -|> 33
-purCol="\e[0;35m\033[1m" # purpura      | purple------- -|> 35
-turCol="\e[0;36m\033[1m" # turquesa     | turquoise---- -|> 36
-graCol="\e[0;37m\033[1m" # gris         | gray--------- -|> 37
-EndCol="\033[0m\e[0m" # fin de color    | end color---- -|>
-#       verifyRoot
-if [ ! $UID -eq 0 ] ; then
-        echo -e "\n\n${redCol} [!]   Hay que ser root! ${EndCol}"
-        exit 1
-fi
-# si utilidad no existe en el PATH, instala utilidad
-ls /usr/local/bin/ | grep -c -o $0 > Existe;
-if [[ $Existe -eq '0' ]]; then
-        chmod +x $0
-        sudo cp $0 /usr/local/bin/
-        # export PATH=$PATH:$PWD
-        clear;
-        echo -e "${turCol}[!] Script instalado... ${EndCol}"
-fi
-# prompt para control+c cuando se corta le ejecucion
-trap ctrl_c INT
+#         Utilidades         
+# Styles
+#  lang ->                   es                  en
+redCol="\e[0;31m\033[1m" # rojo         |   red---------- -|> 31
+greCol="\e[0;32m\033[1m" # verde        |   green-------- -|> 32
+bluCol="\e[0;34m\033[1m" # azul         |   blue--------- -|> 34
+yelCol="\e[0;33m\033[1m" # amarillo     |   yellow------- -|> 33
+purCol="\e[0;35m\033[1m" # purpura      |   purple------- -|> 35
+turCol="\e[0;36m\033[1m" # turquesa     |   turquoise---- -|> 36
+graCol="\e[0;37m\033[1m" # gris         |   gray--------- -|> 37
+EndCol="\033[0m\e[0m"    # fin de color |   end color---- -|>
+trap ctrl_c INT          # estilo para ctrl+c (interrumpir ejecucion)
 function ctrl_c(){
         echo -e "\n\n ${redCol}[!] Saliendo..${EndCol} "
         exit 1
 }
+#
+#           Verificar entorno
+#
+if [[ -n $(apt --version) ]]; then
+        
+        echo -e "${yelCol} [ok!] ${EndCol}" # es ubunto o debian
+        
+        if [ ! $UID -eq 0 ] ; then                
+            echo -e "\n\n${redCol} [!]   Hay que ser root! ${EndCol}" # es root
+            exit 1
+        else
+            if [[ -n $(ls cuervo) ]]; then
+                    chmod +x $0
+                    sudo cp $0 /usr/local/bin/cuervo
+                    # export PATH=$PATH:$PWD
+                    clear;
+                    echo -e "${turCol}[!] Script instalado... \n ahora puedes invocar a $0 ${EndCol}\n ${graCol}(INFORMACION DE USO: $0 --help)${EndCol}"
+                    helpPanel
+            else
+                    echo -e "${turCol}\n\n\n       C  U   E   R   V   O     \n\n\n${EndCol}"
+            fi
+        fi
+else                                                 # si no es el entorno correcto, termina ejecucion.
+        echo -e "${redCol} [!] solo es compatible con debian o ubuntu. ${EndCol}"
+        exit 1
+fi
+#
+#          Panel de ayuda
+#
+helpPanel(){
+cat << DESCRIPCION_help
+SYNOPSIS
+        $0 PALABRACLAVE_1 [PALABRACLAVE_2] ... [PALABRACLAVE_N]
+        PALABRACLAVE = algun referente a la tecnologia de la cual se quiere obtener 
+                       documentacion.
 
-########################### utilidad ##########################################
-# ejemplo de script: este script es mas poderoso de lo que parece
-# es un estado del arte de las principales empresas de tecnologia, desde adentro.
-# hasta la comodidad de 127.0.0.1; 
-# 'basta con introducir la tecnologia que necesites dentro de la variable Eyes'
-# cuervo (cria cuervos y sacaran tus ojos de sus cuencas.)
-# estilo codigo ninja de * https://javascript.info *
+DESCRIPCION
+        Script pensado para la fase de gatheringInfo, en las pruebas de caja negra, sin
+        embargo su aplicacion se extiende a ser de ayuda a los desarrolladores de TI.
+        ya que busca en los mismos repositorios de linux.
+        rastrea herramientas relacionadas a "PALABRACLAVE" y muestra por pantalla.
+        si no recibe ningun argumento, usa por defecto la lista de *PRISM. ya que provee
+        un stack de tecnologias con un alcanze inconmensurable. "es mucho poder senor wayne"
+        *[ referencia https://es.wikipedia.org/wiki/PRISM ]
+        
+EJEMPLOS
+        cuervo --help
+        cuervo ss7
+        cuervo python ruby perl java 
+DESCRIPCION_help
+}
+
+#       
+#           cuervo
+#
+
+#           make workspace
+mkdir .TheMadafackerDeepWeb ; #          [  make
+cp $0 .TheMadafackerDeepWeb/; #             work
+cd .TheMadafackerDeepWeb; #                 space. ] '[ los modales hacen al hombre... ]'
+#           leer parametros
+if [[ $# -eq 0 ]]; then
+    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
+fi
+PRIMERO=1
+while [ -n "$1" ]; do        
+        if [ $PRIMERO -eq 1 ]; then
+                Eyes="$1"
+        else
+                Eyes="$Eyes $1"
+        fi
+        shift
+done
 S__='apt-cache search '
 S_='apt-cache show '
 echo -e " ${graCol} esta es la cantidad de herramientas que vamos a tomar ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
-############ Variable 'Eyes' ################## Variable 'Eyes' ###############
-Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ');
-for (( C=0; C<=4; C++ ));do
+#           Recopilacion de datos
+for (( C=0; C<=5; C++ ));do
         ${S__}${Eyes[C]} > .singleEye[$C]
         cat -n .singleEye[$C] > .Numeracion[$C]
         Contador={ tail -n 1 .Numeracion[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
@@ -63,16 +109,18 @@ for (( C=0; C<=4; C++ ));do
         cat .singleEye[$C] > .Listalib[$C];
 done
 
-echo -e "\n\n ${graCol}  es mucho poder sr. wayne!... ${EndCol}"
-#######################         Imprime recursos prestados              #######
-echo -e "${graCol} quieres que imprima lo que tomaremos prestado? ( Y / N ) ${EndCol}"
+echo -e "\n\n ${graCol}  es mucho poder sr. wayne!!!!\n\n\n${EndCol}"
+#           Imprime herramientas que amablemente nos van a prestar
+echo -e "${graCol} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${EndCol}"
 read imprimir
 if [ $imprimir="Y" ] ;then
-        for (( Home=0; Home<=4; Home++ ));do
-        cat .Listalib[$Home]
+        for (( Boiler=0; Boiler<=4; Boiler++ ));do
+        cat .Listalib[$Boiler]
         done
+else    
+        exit 1
 fi
-########################        Localiza cada recurso prestado          ########
+#           Localiza cada recurso prestado
 echo -e "${graCol}ahora quieres que localize todos estos aportes? ( Y / N ) ${EndCol}" ;
 read mostrar;
 echo -e "${redCol} "
@@ -81,11 +129,14 @@ if [ $mostrar="Y" ];then
         cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
         ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
         done
+else 
+        exit 1
 fi
 
 echo -e "${EndCol} "
 echo -e "${bluCol} [+] Correcto...  ${EndCol}"
 cd ..;
 rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
-exit 1
-                                   
+exit
+
+
