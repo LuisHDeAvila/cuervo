@@ -19,11 +19,16 @@ purCol="\e[0;35m\033[1m" # purpura      |   purple------- -|> 35
 turCol="\e[0;36m\033[1m" # turquesa     |   turquoise---- -|> 36
 graCol="\e[0;37m\033[1m" # gris         |   gray--------- -|> 37
 EndCol="\033[0m\e[0m"    # fin de color |   end color---- -|>
-trap ctrl_c INT          # estilo para ctrl+c (interrumpir ejecucion)
+trap ctrl_c INT         
 function ctrl_c(){
         echo -e "\n\n ${redCol}[!] Saliendo..${EndCol} "
         exit 1
 }
+
+
+
+
+
 #
 #           Verificar entorno
 #
