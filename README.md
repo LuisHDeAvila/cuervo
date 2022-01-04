@@ -1,5 +1,5 @@
 # cuervo
-![alt text](https://github.com/luishdeavila/cuervo/docs/cuervo.png)
+[logo]:https://github.com/LuisHDeAvila/cuervo/blob/main/docs/cuervo.png
 #### que es y que no es
 es un meta-buscador para developers, tecnologos y curiosos de la tecnologia.
 un motor de busqueda escanea la web mediante algo conocido como Spider. Cuervo es un script simple y humilde ~~meta-buscador para el backend~~, para ser mas especifico, Cuervo entra y sale de la *fosa de las marianas*, lo mas *profundo* de la tenebrosa deep web.
@@ -25,7 +25,7 @@ si exploras un poco mas podras ver otros objetos, con:
     ```ls -a /etc```
 cuervo, utiliza este conocimiento representado en muchos datos, para porfin dar con el culpable de determinada tecnologia. Enserio. te entrega los urls exactos donde se puso a la disposicion de la comunidad. (y aunque no se pongan a disposicion, cuervo los atrapa)
 **_no entres a las paginas que tengan dominio gov_** enserio NO lo hagas. pueden ser programas informaticos gubernamentales **secretos**, es mejor dejarlos en paz.
-![alt text](https://github.com/luishdeavila/cuervo/docs/image1.jpeg)
-![alt text](https://github.com/luishdeavila/cuervo/docs/image2.jpeg)
+[logo]:https://github.com/LuisHDeAvila/cuervo/blob/main/docs/image1.jpeg
+[logo]:https://github.com/luishdeavila/cuervo/blob/main/docs/image2.jpeg)
 
 recuerda: "las variables de entorno y el DNS son configuraciones solamente."
