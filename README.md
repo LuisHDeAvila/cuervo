@@ -24,7 +24,7 @@ Lo que escribiste en bash, se traduce a lenguaje natural como:
 si exploras un poco mas podras ver otros objetos, con:      
     ```ls -a /etc```
 cuervo, utiliza este conocimiento representado en muchos datos, para porfin dar con el culpable de determinada tecnologia. Enserio. te entrega los urls exactos donde se puso a la disposicion de la comunidad. (y aunque no se pongan a disposicion, cuervo los atrapa)
-**_no entres a las paginas que tengan dominio gov_** enserio NO lo hagas. pueden ser programas informaticos gubernamentales secretos, es mejor dejarlos en paz.
+**_no entres a las paginas que tengan dominio gov_** enserio NO lo hagas. pueden ser programas informaticos gubernamentales **secretos**, es mejor dejarlos en paz.
 ![alt text](https://github.com/luishdeavila/cuervo/docs/image1.jpeg)
 ![alt text](https://github.com/luishdeavila/cuervo/docs/image2.jpeg)
 
