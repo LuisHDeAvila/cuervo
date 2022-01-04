@@ -4,7 +4,7 @@
 es un meta-buscador para developers, tecnologos y curiosos de la tecnologia.
 un motor de busqueda escanea la web mediante algo conocido como spider. Entonces, cuervo es un script simple y humilde meta-buscador para el backend, para ser mas especifico, Cuervo entra y sale de la ~~fosa de las marianas~~, lo mas ~~profundo~~ de la tenebrosa y escalofriante ~~deep web~~.
 ---
-[Sigo haciendo satira hacia el comentario que recibi hace un tiempo. Alguien me dijo que yo era un black hat kaker malicioso. porque me habia kakeado y dumpeado todo lo que escribia desde mi dispositivo. cosa que me causo ternura por todos los problemas que me causo a el bastardo con tal acusacion. Hoy en dia es un buen colega. Mira, hablo mas sobre esa historia en [pentesting-sigsagseven](https://github.com/eleache/pentesting-sigsagseven).]
+###### Sigo haciendo satira hacia el comentario que recibi hace un tiempo. Alguien me dijo que yo era un black hat kaker malicioso. porque me habia kakeado y dumpeado todo lo que escribia desde mi dispositivo. En ese momento no me daba nada de gracia, por todos los problemas que me provoco aquel bastardo. Que hoy en dia es un buen colega. Mira para no enrollarme, hablo mas sobre esa historia en [pentesting-sigsagseven](https://github.com/eleache/pentesting-sigsagseven).
 ---
 #### Como funciona
 El algoritmo que usa cuervo es muy eficaz para encontrar informacion util, sin rodeos y presentada de la mejor forma: por sus mismos autores.
