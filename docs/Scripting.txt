@@ -1,0 +1,3 @@
+# sobre scripting
+un programa es simplemente una secuencia de tecla pulsadas almacenada porla calculadora. siempre que usted necesite hacer un calcula en la misma secuencia de tclas pulsadas varias veces puede ahorrar mucho tiempo incorporando esta secuencia de telcas puldasen un prtograma. en vez de pulsar todas las teclas cada vez, usted pulsa una sola tela para comenzar el prgorama y la calculadora hace el resto por usted.
+[manual de propietario y guia para la solucon d problemas - Hewlett-packard]

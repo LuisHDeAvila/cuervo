@@ -1,12 +1,13 @@
-#!/bin/bash
-#       author: eleAche
-#       title: CUERVO                           (cria cuervos y sacaran tus 
-#                                               ojos de sus cuencas.)
+#!/bin/bash                                                                                     
+#       author: eleAche                                               
+#       title: CUERVO  1.0                              "cria cuervos y sacaran tus             
+#                                                        ojos de sus cuencas." -cancerbero      
+#                                                .________________________________________.
 mkdir .TheMadafackerDeepWeb ; #          [  make
 cp $0 .TheMadafackerDeepWeb/; #             work
-cd .TheMadafackerDeepWeb; #                 space. ] '[ los modales hacen al hombre... ]'
+cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre... ]
 
-# LEER PARAMETROS
+# LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
     Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
 fi
