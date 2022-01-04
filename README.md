@@ -1,5 +1,5 @@
 # cuervo
-[logo image](/docs/cuervo.png)
+![alt image](/docs/cuervo.png)
 #### que es y que no es
 es un meta-buscador para developers, tecnologos y curiosos de la tecnologia.
 un motor de busqueda escanea la web mediante algo conocido como Spider. Cuervo es un script simple y humilde ~~meta-buscador para el backend~~, para ser mas especifico, Cuervo entra y sale de la *fosa de las marianas*, lo mas *profundo* de la tenebrosa deep web.
