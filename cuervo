@@ -1,65 +1,103 @@
-#!/bin/bash
-#       author: eleAche
-#       title: CUERVO                           (cria cuervos y sacaran tus 
-#                                               ojos de sus cuencas.)
-mkdir .TheMadafackerDeepWeb ; #          [  make
-cp $0 .TheMadafackerDeepWeb/; #             work
-cd .TheMadafackerDeepWeb; #                 space. ] '[ los modales hacen al hombre... ]'
+#!/bin/bash                                                                                     
+#       author: eleAche                                               
+#       title: CUERVO  1.0                              "cria cuervos y sacaran tus             
+#                                                        ojos de sus cuencas." -cancerbero      
+#                                                .________________________________________.
 
-# LEER PARAMETROS
+# ESTILOS
+#  lang ->                   es                  en
+REDCOLOR="\e[0;31m\033[1m" # rojo         |   red---------- -|> 31
+GREENCOLOR="\e[0;32m\033[1m" # verde        |   green-------- -|> 32
+BLUECOLOR="\e[0;34m\033[1m" # azul         |   blue--------- -|> 34
+YELLOWCOLOR="\e[0;33m\033[1m" # amarillo     |   yellow------- -|> 33
+PURPLECOLOR="\e[0;35m\033[1m" # purpura      |   purple------- -|> 35
+TURQUOISECOLOR="\e[0;36m\033[1m" # turquesa     |   turquoise---- -|> 36
+GRAYCOLOR="\e[0;37m\033[1m" # gris         |   gray--------- -|> 37
+ENDCOLOR="\033[0m\e[0m"    # fin de color |   end color---- -|> .
+
+# SALIDA ESTILIZADA
+trap ctrl_c INT         
+function ctrl_c(){
+        echo -e "\n\n ${REDCOLOR}[!] Saliendo..${ENDCOLOR} "
+        exit 1
+}
+
+# REQUISITOS
+if [[ -n $(apt --version) ]]; then #               # entorno adecuado?       
+        echo -e "${YELLOWCOLOR} [ok!] ${ENDCOLOR}"
+        if [ ! $UID -eq 0 ] ; then  #              # root?              
+            echo -e "\n\n${REDCOLOR} [!]   Hay que ser root! ${ENDCOLOR}"
+            exit 1
+        else
+            if [[ -n $(ls cuervo) ]]; then #       # ejecutable?
+                  chmod +x $0
+                    sudo cp $0 /usr/local/bin/cuervo
+                    # export PATH=$PATH:$PWD
+                    clear;
+                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${ENDCOLOR}\n ${graCol}(INFORMACION DE USO: $0 --help)${ENDCOLOR}"
+                    helpPanel
+             fi
+        fi
+fi
+
+# EJECUCION
+mkdir .WORKBOX ; #          [  make
+cp $0 .WORKBOX/; #             work
+cd .WORKBOX; #                 space. | Los modales hacen al hombre... ]
+
+# LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
+EYES=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
         if [ $PRIMERO -eq 1 ]; then
-                Eyes="$1"
+        EYES="$1"
         else
-                Eyes="$Eyes $1"
+        EYES="EYES $1"
         fi
         shift
 done
-S__='pacman -Ss ' # arch distro linux 
+S__='apt-cache search ' # arch distro linux 
 S_='apt-cache show '
-echo -e " ${graCol} esta es la cantidad de herramientas que vamos a tomar ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
-
+echo -e " ${GRAYCOLOR} esta es la cantidad de herramientas que vamos a tomar ${ENDCOLOR}${YELLOWCOLOR}}prestadas${ENDCOLOR}${GRAYCOLOR}... ${ENDCOLOR}"
 # RECOPILAR DATOS
 for (( C=0; C<=5; C++ ));do
-        ${S__}${Eyes[C]} > .singleEye[$C]
-        cat -n .singleEye[$C] > .Numeracion[$C]
-        Contador={ tail -n 1 .Numeracion[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
-        echo -e "${bluCol}~  $Contador ~ ${Eyes[C]}${EndCol} "
-        cat .singleEye[$C] > .Listalib[$C];
+        ${S__}$EYES[C]} > .SINGLEEYE[$C]
+        cat -n .SINGLEEYE[$C] > .NUMERACION[$C]
+        CONTADOR={ tail -n 1 .NUMERACION[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
+        echo -e "${BLUECOLOR}~  $CONTADOR ~ $EYES[C]}${ENDCOLOR} "
+        cat .SINGLEEYE[$C] > .LISTALIB[$C];
 done
-echo -e "\n\n ${graCol}  es mucho poder sr. wayne!!!!\n\n\n${EndCol}"
+echo -e "\n\n ${GRAYCOLOR}  es mucho poder sr. wayne!!!!\n\n\n${ENDCOLOR}"
 
 # IMPRIME TITULO:DESCRIPCION DE RESULTADOS
-echo -e "${graCol} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${EndCol}"
-read imprimir
-if [ $imprimir="Y" ] ;then
-        for (( Boiler=0; Boiler<=4; Boiler++ ));do
-        cat .Listalib[$Boiler]
+echo -e "${GRAYCOLOR} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${ENDCOLOR}"
+read IMPRIMIR
+if [ $IMPRIMIR="Y" ] ;then
+        for (( BOILERDELVECINO=0; BOILERDELVECINO<=6; BOILERDELVECINO++ ));do
+        cat .LISTALIB[$BOILERDELVECINO]
         done
 else    
         exit 1
 fi
 
 # IMPRIME LOCALIZACION DE RESULTADOS
-echo -e "${graCol}ahora quieres que localize todos estos aportes? ( Y / N ) ${EndCol}" ;
-read mostrar;
-echo -e "${redCol} "
-if [ $mostrar="Y" ];then
-        for (( homeless=0; homeless<=4; homeless++ ));do
-        cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
-        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
+echo -e "${GRAYCOLOR}ahora quieres que localize todos estos aportes? ( Y / N ) ${ENDCOLOR}" ;
+read MOSTRAR;
+echo -e "${REDCOLOROR} "
+if [ $MOSTRAR="Y" ];then
+        for (( HOMELESS=0; HOMELESS<=6; HOMELESS++ ));do
+        cat .LISTALIB[$HOMELESS] | awk 'BEGIN{ORS= " "}{print $1}' > SOLOKEYWORDS[$HOMELESS]
+        ${S_}$SOLOKEYWORDS[$HOMELESS] |grep Homepage |sort -u
         done
 else 
         exit 1
 fi
 
 # EJECUCION EXITOSA
-echo -e "${EndCol} "
-echo -e "${bluCol} [+] Correcto...  ${EndCol}"
+echo -e "${ENDCOLOR} "
+echo -e "${BLUECOLOR} [+] Correcto...  ${ENDCOLOR}"
 cd ..;
-rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
+rm -r .WORKBOX > /dev/null; # travesura realizada
 exit 1
