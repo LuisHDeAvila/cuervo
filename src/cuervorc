@@ -1,15 +1,11 @@
-#!/bin/bash                                                                                     
-#       author: eleAche                                               
-#       title: CUERVO  1.0                              "cria cuervos y sacaran tus             
-#                                                        ojos de sus cuencas." -cancerbero      
-#                                                .________________________________________.
+
 mkdir .TheMadafackerDeepWeb ; #          [  make
 cp $0 .TheMadafackerDeepWeb/; #             work
 cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre... ]
 
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
+    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox ');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
@@ -20,9 +16,9 @@ while [ -n "$1" ]; do
         fi
         shift
 done
-S__='pacman -Ss ' # arch distro linux 
-S_='apt-cache show '
-echo -e " ${graCol} esta es la cantidad de herramientas que vamos a tomar ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
+S__='pacman -Ss || apt-cache search ' # arch distro linux 
+S_='pacman -T || apt-cache show '
+echo -e " ${graCol} como si no supiera... ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
 
 # RECOPILAR DATOS
 for (( C=0; C<=5; C++ ));do
@@ -46,11 +42,11 @@ else
 fi
 
 # IMPRIME LOCALIZACION DE RESULTADOS
-echo -e "${graCol}ahora quieres que localize todos estos aportes? ( Y / N ) ${EndCol}" ;
+echo -e "${graCol} Mostrar  [CLICK ENTER] ${EndCol}" ;
 read mostrar;
 echo -e "${redCol} "
 if [ $mostrar="Y" ];then
-        for (( homeless=0; homeless<=4; homeless++ ));do
+        for (( homeless=0; homeless<=8; homeless++ ));do
         cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
         ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
         done

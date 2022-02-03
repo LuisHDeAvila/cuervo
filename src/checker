@@ -1,0 +1,16 @@
+if [[ -n $(apt --version || pacman -V) ]]; then #               # entorno adecuado?       
+        echo -e "${YELLOWCOLOR} [ok!] ${_END}"
+        if [ ! $UID -eq 0 ] ; then  #              # root?              
+            echo -e "\n\n${REDCOLOR} [!]   Hay que ser root! ${_END}"
+            exit 1
+        else
+            if [[ -n $(ls cuervo) ]]; then #       # ejecutable?
+                  chmod +x $0
+                    sudo cp $0 /usr/local/bin/cuervo
+                    # export PATH=$PATH:$PWD
+                    clear;
+                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${_END}\n ${GRAYCOLOR}(INFORMACION DE USO: $0 --help)${_END}" | pv -qL 100
+                    clear;
+            fi
+        fi
+fi; echo 1

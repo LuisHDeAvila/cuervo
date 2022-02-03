@@ -3,30 +3,49 @@
 #       title: CUERVO  1.0                              "cria cuervos y sacaran tus             
 #                                                        ojos de sus cuencas." -cancerbero      
 #                                                .________________________________________.
-
+# EFECTO MATRIX
+# MATRIX_STYLE={ perl -e '$|++; while (1) { print " " x (rand(35) + 1 ), int(rand(2)) }' ;                                                                                  
 # ESTILOS
 #  lang ->                   es                  en
-REDCOLOR="\e[0;31m\033[1m" # rojo         |   red---------- -|> 31
+REDCOLOR="\e[1;31m\033[1m" # rojo         |   red---------- -|> 31
 GREENCOLOR="\e[0;32m\033[1m" # verde        |   green-------- -|> 32
 BLUECOLOR="\e[0;34m\033[1m" # azul         |   blue--------- -|> 34
 YELLOWCOLOR="\e[0;33m\033[1m" # amarillo     |   yellow------- -|> 33
 PURPLECOLOR="\e[0;35m\033[1m" # purpura      |   purple------- -|> 35
 TURQUOISECOLOR="\e[0;36m\033[1m" # turquesa     |   turquoise---- -|> 36
 GRAYCOLOR="\e[0;37m\033[1m" # gris         |   gray--------- -|> 37
-ENDCOLOR="\033[0m\e[0m"    # fin de color |   end color---- -|> .
-
+_END="\033[0m\e[0m"    # fin de color |   end color---- -|> .
+ENIGMA() { cat << 'ANON'
+ ▄████▄   █    ██ ▓█████  ██▀███   ██▒   █▓ ▒█████  
+▒██▀ ▀█   ██  ▓██▒▓█   ▀ ▓██ ▒ ██▒▓██░   █▒▒██▒  ██▒
+▒▓█    ▄ ▓██  ▒██░▒███   ▓██ ░▄█ ▒ ▓██  █▒░▒██░  ██▒
+▒▓▓▄ ▄██▒▓▓█  ░██░▒▓█  ▄ ▒██▀▀█▄    ▒██ █░░▒██   ██░
+▒ ▓███▀ ░▒▒█████▓ ░▒████▒░██▓ ▒██▒   ▒▀█░  ░ ████▓▒░
+░ ░▒ ▒  ░░▒▓▒ ▒ ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░   ░ ▐░  ░ ▒░▒░▒░ 
+  ░  ▒   ░░▒░ ░ ░  ░ ░  ░  ░▒ ░ ▒░   ░ ░░    ░ ▒ ▒░ 
+░         ░░░ ░ ░    ░     ░░   ░      ░░  ░ ░ ░ ▒  
+░ ░         ░        ░  ░   ░           ░      ░ ░  
+░       [by: crybaby]                   ░              
+    Cria cuervos y sacaran tus ojos de sus 
+        cuencas."        -cancerbero                                                       
+ANON
+}                                                   
+echo -e "${REDCOLOR}"; ENIGMA | pv -qL 1100 ; echo -e "${_END}" 
+echo '                  press [ENTER] to continue...'
+read INITIALIZATION
+clear;
+                                        
+                                                    
 # SALIDA ESTILIZADA
 trap ctrl_c INT         
 function ctrl_c(){
         echo -e "\n\n ${REDCOLOR}[!] Saliendo..${ENDCOLOR} "
         exit 1
 }
-
-# REQUISITOS
-if [[ -n $(apt --version) ]]; then #               # entorno adecuado?       
-        echo -e "${YELLOWCOLOR} [ok!] ${ENDCOLOR}"
+if [[ -n $(apt --version || pacman -V) ]]; then #               # entorno adecuado?       
+        echo -e "${YELLOWCOLOR} [ok!] ${_END}"
         if [ ! $UID -eq 0 ] ; then  #              # root?              
-            echo -e "\n\n${REDCOLOR} [!]   Hay que ser root! ${ENDCOLOR}"
+            echo -e "\n\n${REDCOLOR} [!]   Hay que ser root! ${_END}"
             exit 1
         else
             if [[ -n $(ls cuervo) ]]; then #       # ejecutable?
@@ -34,70 +53,70 @@ if [[ -n $(apt --version) ]]; then #               # entorno adecuado?
                     sudo cp $0 /usr/local/bin/cuervo
                     # export PATH=$PATH:$PWD
                     clear;
-                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${ENDCOLOR}\n ${graCol}(INFORMACION DE USO: $0 --help)${ENDCOLOR}"
-                    helpPanel
-             fi
+                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${_END}\n ${GRAYCOLOR}(INFORMACION DE USO: $0 --help)${_END}" | pv -qL 100
+                    clear;
+            fi
         fi
-fi
+fi; echo 1
 
-# EJECUCION
-mkdir .WORKBOX ; #          [  make
-cp $0 .WORKBOX/; #             work
-cd .WORKBOX; #                 space. | Los modales hacen al hombre... ]
+mkdir .TheMadafackerDeepWeb ; #          [  make
+cp $0 .TheMadafackerDeepWeb/; #             work
+cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre... ]
 
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-EYES=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox');
+    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox ');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
         if [ $PRIMERO -eq 1 ]; then
-        EYES="$1"
+                Eyes="$1"
         else
-        EYES="EYES $1"
+                Eyes="$Eyes $1"
         fi
         shift
 done
-S__='apt-cache search ' # arch distro linux 
+S__='apt-cache search ' # arch distro linux PROXIMANENTE
 S_='apt-cache show '
-echo -e " ${GRAYCOLOR} esta es la cantidad de herramientas que vamos a tomar ${ENDCOLOR}${YELLOWCOLOR}}prestadas${ENDCOLOR}${GRAYCOLOR}... ${ENDCOLOR}"
+echo -e " ${GRAYCOLOR} como si no supiera... ${_END}${YELLOWCOLOR}prestadas${_END}${GRAYCOLOR}... ${_END}"
+
 # RECOPILAR DATOS
-for (( C=0; C<=5; C++ ));do
-        ${S__}$EYES[C]} > .SINGLEEYE[$C]
-        cat -n .SINGLEEYE[$C] > .NUMERACION[$C]
-        CONTADOR={ tail -n 1 .NUMERACION[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
-        echo -e "${BLUECOLOR}~  $CONTADOR ~ $EYES[C]}${ENDCOLOR} "
-        cat .SINGLEEYE[$C] > .LISTALIB[$C];
+for (( C=0; C<=8; C++ ));do
+        ${S__}${Eyes[C]} > .singleEye[$C]
+        cat -n .singleEye[$C] > .Numeracion[$C]
+        Contador={ tail -n 1 .Numeracion[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
+        echo -e "${BLUECOLOR}~  $Contador ~ ${Eyes[C]}${_END} "
+        cat .singleEye[$C] > .Listalib[$C];
 done
-echo -e "\n\n ${GRAYCOLOR}  es mucho poder sr. wayne!!!!\n\n\n${ENDCOLOR}"
+echo -e "\n\n ${GRAYCOLOR}  es mucho poder sr. wayne!!!!\n\n\n${_END}"
 
 # IMPRIME TITULO:DESCRIPCION DE RESULTADOS
-echo -e "${GRAYCOLOR} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${ENDCOLOR}"
-read IMPRIMIR
-if [ $IMPRIMIR="Y" ] ;then
-        for (( BOILERDELVECINO=0; BOILERDELVECINO<=6; BOILERDELVECINO++ ));do
-        cat .LISTALIB[$BOILERDELVECINO]
+echo -e "${GRAYCOLOR} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${_END}"
+read imprimir
+if [ $imprimir="Y" ] ;then
+        for (( Boiler=0; Boiler<=8; Boiler++ ));do
+        cat .Listalib[$Boiler]
         done
 else    
         exit 1
 fi
 
 # IMPRIME LOCALIZACION DE RESULTADOS
-echo -e "${GRAYCOLOR}ahora quieres que localize todos estos aportes? ( Y / N ) ${ENDCOLOR}" ;
-read MOSTRAR;
-echo -e "${REDCOLOROR} "
-if [ $MOSTRAR="Y" ];then
-        for (( HOMELESS=0; HOMELESS<=6; HOMELESS++ ));do
-        cat .LISTALIB[$HOMELESS] | awk 'BEGIN{ORS= " "}{print $1}' > SOLOKEYWORDS[$HOMELESS]
-        ${S_}$SOLOKEYWORDS[$HOMELESS] |grep Homepage |sort -u
+echo -e "${GRAYCOLOR} Mostrar  [CLICK ENTER] ${_END}" ;
+read mostrar;
+echo -e "${REDCOLOR} "
+if [ $mostrar="Y" ];then
+        for (( homeless=0; homeless<=8; homeless++ ));do
+        cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
+        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
         done
 else 
         exit 1
 fi
 
 # EJECUCION EXITOSA
-echo -e "${ENDCOLOR} "
-echo -e "${BLUECOLOR} [+] Correcto...  ${ENDCOLOR}"
+echo -e "${_END} "
+echo -e "${BLUECOLOR} [+] Correcto...  ${_END}"
 cd ..;
-rm -r .WORKBOX > /dev/null; # travesura realizada
+rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
 exit 1
