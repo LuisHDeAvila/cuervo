@@ -5,7 +5,7 @@ cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre
 
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox ');
+    Eyes=('internet ' 'security ' 'iot ' 'interface ' 'manager ' 'telemetry ' 'admin ');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
@@ -48,15 +48,15 @@ echo -e "${redCol} "
 if [ $mostrar="Y" ];then
         for (( homeless=0; homeless<=8; homeless++ ));do
         cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
-        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
+        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u >> ~/CUERVO_objetosprestados.txt
         done
 else 
-        exit 1
+        echo 'pronto estara disponible en esta ditribucion'
 fi
-
+cat ~/CUERVO_objetosprestados.txt -n
 # EJECUCION EXITOSA
 echo -e "${EndCol} "
 echo -e "${bluCol} [+] Correcto...  ${EndCol}"
 cd ..;
 rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
-exit 1
+

@@ -2,11 +2,11 @@
 #       author: eleAche                                               
 #       title: CUERVO  1.0                              "cria cuervos y sacaran tus             
 #                                                        ojos de sus cuencas." -cancerbero      
-#                                                .________________________________________.
-# EFECTO MATRIX
-# MATRIX_STYLE={ perl -e '$|++; while (1) { print " " x (rand(35) + 1 ), int(rand(2)) }' ;                                                                                  
+#                                                .________________________________________.    
 # ESTILOS
 #  lang ->                   es                  en
+
+
 REDCOLOR="\e[1;31m\033[1m" # rojo         |   red---------- -|> 31
 GREENCOLOR="\e[0;32m\033[1m" # verde        |   green-------- -|> 32
 BLUECOLOR="\e[0;34m\033[1m" # azul         |   blue--------- -|> 34
@@ -33,9 +33,8 @@ ANON
 echo -e "${REDCOLOR}"; ENIGMA | pv -qL 1100 ; echo -e "${_END}" 
 echo '                  press [ENTER] to continue...'
 read INITIALIZATION
-clear;
-                                        
-                                                    
+clear;                             
+                       
 # SALIDA ESTILIZADA
 trap ctrl_c INT         
 function ctrl_c(){
@@ -51,11 +50,15 @@ if [[ -n $(apt --version || pacman -V) ]]; then #               # entorno adecua
             if [[ -n $(ls cuervo) ]]; then #       # ejecutable?
                   chmod +x $0
                     sudo cp $0 /usr/local/bin/cuervo
+                    sudo apt-get install pv || sudo pacman -Syy pv > /dev/null
                     # export PATH=$PATH:$PWD
                     clear;
-                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${_END}\n ${GRAYCOLOR}(INFORMACION DE USO: $0 --help)${_END}" | pv -qL 100
-                    clear;
+                    echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocar a $0 ${_END}\n ${GRAYCOLOR}(escribe "cuervo" $0)${_END}" | pv -qL 20
+                    exit 1;
+            else
+                clear;
             fi
+            
         fi
 fi; echo 1
 
@@ -65,7 +68,7 @@ cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre
 
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox ');
+    Eyes=('internet ' 'security ' 'iot ' 'interface ' 'manager ' 'telemetry ' 'admin ');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
@@ -76,25 +79,25 @@ while [ -n "$1" ]; do
         fi
         shift
 done
-S__='apt-cache search ' # arch distro linux PROXIMANENTE
-S_='apt-cache show '
-echo -e " ${GRAYCOLOR} como si no supiera... ${_END}${YELLOWCOLOR}prestadas${_END}${GRAYCOLOR}... ${_END}"
+S__='pacman -Ss || apt-cache search ' # arch distro linux 
+S_='pacman -T || apt-cache show '
+echo -e " ${graCol} como si no supiera... ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
 
 # RECOPILAR DATOS
-for (( C=0; C<=8; C++ ));do
+for (( C=0; C<=5; C++ ));do
         ${S__}${Eyes[C]} > .singleEye[$C]
         cat -n .singleEye[$C] > .Numeracion[$C]
         Contador={ tail -n 1 .Numeracion[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
-        echo -e "${BLUECOLOR}~  $Contador ~ ${Eyes[C]}${_END} "
+        echo -e "${bluCol}~  $Contador ~ ${Eyes[C]}${EndCol} "
         cat .singleEye[$C] > .Listalib[$C];
 done
-echo -e "\n\n ${GRAYCOLOR}  es mucho poder sr. wayne!!!!\n\n\n${_END}"
+echo -e "\n\n ${graCol}  es mucho poder sr. wayne!!!!\n\n\n${EndCol}"
 
 # IMPRIME TITULO:DESCRIPCION DE RESULTADOS
-echo -e "${GRAYCOLOR} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${_END}"
+echo -e "${graCol} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${EndCol}"
 read imprimir
 if [ $imprimir="Y" ] ;then
-        for (( Boiler=0; Boiler<=8; Boiler++ ));do
+        for (( Boiler=0; Boiler<=4; Boiler++ ));do
         cat .Listalib[$Boiler]
         done
 else    
@@ -102,21 +105,27 @@ else
 fi
 
 # IMPRIME LOCALIZACION DE RESULTADOS
-echo -e "${GRAYCOLOR} Mostrar  [CLICK ENTER] ${_END}" ;
+echo -e "${graCol} Mostrar  [CLICK ENTER] ${EndCol}" ;
 read mostrar;
-echo -e "${REDCOLOR} "
+echo -e "${redCol} "
 if [ $mostrar="Y" ];then
         for (( homeless=0; homeless<=8; homeless++ ));do
         cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
-        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u
+        ${S_}$solokeywords[$homeless] |grep Homepage |sort -u >> ~/CUERVO_objetosprestados.txt
         done
 else 
-        exit 1
+        echo 'pronto estara disponible en esta ditribucion'
 fi
-
+cat ~/CUERVO_objetosprestados.txt -n
 # EJECUCION EXITOSA
-echo -e "${_END} "
-echo -e "${BLUECOLOR} [+] Correcto...  ${_END}"
+echo -e "${EndCol} "
+echo -e "${bluCol} [+] Correcto...  ${EndCol}"
 cd ..;
 rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
-exit 1
+
+echo 'click [ENTER]' 
+read EXITPLEASE
+clear
+echo '          FOLLOW THE WHITE RABBIT...                          ' | pv -qL 10
+
+MATRIX_STYLE={ perl -e '$|++; while (1) { print " " x (rand(35) + 1 ), int(rand(2)) }' ;
