@@ -5,7 +5,7 @@ cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre
 
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
-    Eyes=('facebook ' 'google ' 'amazon ' 'microsoft ' 'apple ' 'yahoo ' 'dropbox ');
+    Eyes=('internet ' 'security ' 'iot ' 'interface ' 'manager ' 'telemetry ' 'admin ');
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
