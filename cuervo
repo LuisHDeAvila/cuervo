@@ -46,7 +46,7 @@ if [[ -n $(apt --version || pacman -V) ]]; then #               # entorno adecua
             echo -e "\n\n${REDCOLOR} [!]   Hay que ser root! ${_END}"
             exit 1
         else
-            if [[ -n $(ls /usr/local/bin/cuervo) ]]; then #       # ejecutable?
+            if [[ -n ${ls /usr/local/bin/cuervo} ]]; then #       # ejecutable?
                   chmod +x $0
                     sudo cp $0 /usr/local/bin/cuervo
                     sudo apt-get install pv || sudo pacman -Syy pv > /dev/null
