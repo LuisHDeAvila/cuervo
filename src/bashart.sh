@@ -2,7 +2,6 @@
 # ESTILOS
 #  lang ->                   es                  en
 
-
 REDCOLOR="\e[1;31m\033[1m" # rojo         |   red---------- -|> 31
 GREENCOLOR="\e[0;32m\033[1m" # verde        |   green-------- -|> 32
 BLUECOLOR="\e[0;34m\033[1m" # azul         |   blue--------- -|> 34
@@ -21,9 +20,9 @@ ENIGMA() { cat << 'ANON'
   ░  ▒   ░░▒░ ░ ░  ░ ░  ░  ░▒ ░ ▒░   ░ ░░    ░ ▒ ▒░ 
 ░         ░░░ ░ ░    ░     ░░   ░      ░░  ░ ░ ░ ▒  
 ░ ░         ░        ░  ░   ░           ░      ░ ░  
-░       [by: crybaby]                   ░              
-    Cria cuervos y sacaran tus ojos de sus 
-        cuencas."        -cancerbero                                                       
+░       [[by: crybaby ]KAKIN ETICO]     ░              
+    "Cria cuervos y sacaran tus ojos de sus
+        cuencas."        -canserbero                                                       
 ANON
 }                                                   
 echo -e "${REDCOLOR}"; ENIGMA | pv -qL 1100 ; echo -e "${_END}" 
