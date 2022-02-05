@@ -121,8 +121,8 @@ echo -e "${_END} "
 echo -e "${BLUECOLOR} [+] Correcto...  ${_END}"
 cd ..;
 rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
-
-echo 'click [ENTER]' 
+ls ~/ | grep cuervo ; echo '       aqui te dejare algo'
+echo '      click [ENTER] para comenzar ' 
 read EXITPLEASE
 clear
 echo '          FOLLOW THE WHITE RABBIT...                          ' | pv -qL 10
