@@ -80,8 +80,8 @@ while [ -n "$1" ]; do
         fi
         shift
 done
-S__='pacman -Ss || apt-cache search ' # arch distro linux 
-S_='pacman -T || apt-cache show '
+S__='apt-cache search ' # arch distro linux 
+S_='apt-cache show '
 echo -e " ${GRAYCOLOR} como si no supiera... ${_END}${YELLOWCOLOR}prestadas${_END}${GRAYCOLOR}... ${_END}"
 
 # RECOPILAR DATOS
