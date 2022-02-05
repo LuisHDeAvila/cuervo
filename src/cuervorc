@@ -6,6 +6,8 @@ cd .TheMadafackerDeepWeb; #                 space. | Los modales hacen al hombre
 # LEE PARAMETROS
 if [[ $# -eq 0 ]]; then
     Eyes=('internet ' 'security ' 'iot ' 'interface ' 'manager ' 'telemetry ' 'admin ');
+else
+        Eyes=('$1 ' '$2 ' '$3 ' '$4 ')
 fi
 PRIMERO=1
 while [ -n "$1" ]; do        
@@ -18,21 +20,19 @@ while [ -n "$1" ]; do
 done
 S__='pacman -Ss || apt-cache search ' # arch distro linux 
 S_='pacman -T || apt-cache show '
-echo -e " ${graCol} como si no supiera... ${EndCol}${yelCol}prestadas${EndCol}${graCol}... ${EndCol}"
+echo -e " ${GRAYCOLOR} como si no supiera... ${_END}${YELLOWCOLOR}prestadas${_END}${GRAYCOLOR}... ${_END}"
 
 # RECOPILAR DATOS
 for (( C=0; C<=5; C++ ));do
         ${S__}${Eyes[C]} > .singleEye[$C]
         cat -n .singleEye[$C] > .Numeracion[$C]
         Contador={ tail -n 1 .Numeracion[$C] | awk 'BEGIN{ORS= " "}{print $1}' 
-        echo -e "${bluCol}~  $Contador ~ ${Eyes[C]}${EndCol} "
+        echo -e "${BLUECOLOR}~  $Contador ~ ${Eyes[C]}${_END} "
         cat .singleEye[$C] > .Listalib[$C];
 done
-echo -e "\n\n ${graCol}  es mucho poder sr. wayne!!!!\n\n\n${EndCol}"
+echo -e "\n\n ${GRAYCOLOR}  es mucho poder sr. wayne!!!!\n\n\n${_END}"
 
 # IMPRIME TITULO:DESCRIPCION DE RESULTADOS
-echo -e "${graCol} ... quieres que imprima lo que tomaremos prestado? ( Y / N ) ${EndCol}"
-read imprimir
 if [ $imprimir="Y" ] ;then
         for (( Boiler=0; Boiler<=4; Boiler++ ));do
         cat .Listalib[$Boiler]
@@ -42,9 +42,9 @@ else
 fi
 
 # IMPRIME LOCALIZACION DE RESULTADOS
-echo -e "${graCol} Mostrar  [CLICK ENTER] ${EndCol}" ;
+echo -e "${GRAYCOLOR} Mostrar  [CLICK ENTER] ${_END}" ;
 read mostrar;
-echo -e "${redCol} "
+echo -e "${REDCOLOR} "
 if [ $mostrar="Y" ];then
         for (( homeless=0; homeless<=8; homeless++ ));do
         cat .Listalib[$homeless] | awk 'BEGIN{ORS= " "}{print $1}' > solokeywords[$homeless]
@@ -55,8 +55,8 @@ else
 fi
 cat ~/CUERVO_objetosprestados.txt -n
 # EJECUCION EXITOSA
-echo -e "${EndCol} "
-echo -e "${bluCol} [+] Correcto...  ${EndCol}"
+echo -e "${_END} "
+echo -e "${BLUECOLOR} [+] Correcto...  ${_END}"
 cd ..;
 rm -r .TheMadafackerDeepWeb > /dev/null; # travesura realizada
 
