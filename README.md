@@ -1,12 +1,21 @@
 # cuervo
 ![alt image](/docs/cuervo.png)
-#### que es y que no es
-es un meta-buscador para developers, tecnologos y curiosos de la tecnologia.
+meta-buscador para developers, tecnologos y curiosos de la tecnologia.
 un motor de busqueda escanea la web mediante algo conocido como spider. Entonces, cuervo es un script simple y humilde meta-buscador para el backend, para ser mas especifico, Cuervo entra y sale de la ~~fosa de las marianas~~, lo mas ~~profundo~~ de la tenebrosa y escalofriante ~~deep web~~.
+```
+    # opcion 1
+    >_   bash cuervo
+    # opcion 2
+    
+    >_   chmod +x cuervo
+    >_   ./cuervo
+    
+```
+
 ---
 ###### Sigo haciendo satira hacia el comentario que recibi hace un tiempo. Alguien me dijo que yo era un black hat kaker malicioso. porque me habia kakeado y dumpeado todo lo que escribia desde mi dispositivo. En ese momento no me daba nada de gracia, por todos los problemas que me provoco aquel bastardo. Que hoy en dia es un buen colega. Mira para no enrollarme, hablo mas sobre esa historia en [pentesting-sigsagseven](https://github.com/eleache/pentesting-sigsagseven).
 ---
-#### Como funciona
+## Como funciona
 El algoritmo que usa cuervo es muy eficaz para encontrar informacion util, sin rodeos y presentada de la mejor forma: por sus mismos autores.
 Rastrea, en donde exactamente se encuentra el genesis de cada programa, tecnologia o herramienta que se usa en las tecnologias de la informacion.
 
