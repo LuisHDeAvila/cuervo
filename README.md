@@ -3,12 +3,14 @@
 meta-buscador para developers, tecnologos y curiosos de la tecnologia.
 un motor de busqueda escanea la web mediante algo conocido como spider. Entonces, cuervo es un script simple y humilde meta-buscador para el backend, para ser mas especifico, Cuervo entra y sale de la ~~fosa de las marianas~~, lo mas ~~profundo~~ de la tenebrosa y escalofriante ~~deep web~~.
 ```
+    # USO : 
     # opcion 1
-    >_   bash cuervo
-    # opcion 2
+    bash cuervo
     
-    >_   chmod +x cuervo
-    >_   ./cuervo
+    
+    # opcion 2
+    chmod +x cuervo
+    ./cuervo
     
 ```
 
