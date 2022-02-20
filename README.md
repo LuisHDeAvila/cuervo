@@ -30,7 +30,7 @@ los resultados varian en cada sistema tambien conocido como distribucion de linu
 esto es posible porque tienen algo en comun, que tambien involucra a IOS y windows: todos estan hechos con el lenguaje de programacion C.
 
 para que quede mas claro...
-en [ONLINE GBD](https://onlinegbd.com)
+en [ONLINE GBD](https://www.onlinegdb.com/)
 
 _selecciona como lenguaje a bash. teclea lo siguiente: 
     ```cd ..; cd ..; cat /etc/apt/sources.list```
