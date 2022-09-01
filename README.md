@@ -1,4 +1,5 @@
 # cuervo
+entorno: ParrotOS | Kali Linux (debian)
 ![alt image](/docs/cuervo.png)
 
 ```
