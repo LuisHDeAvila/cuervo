@@ -6,9 +6,8 @@ if [[ -n $(apt --version || pacman -V) ]]; then #               # entorno adecua
         else
             if [[ -n $(ls /usr/local/bin/cuervo) ]]; then #       # ejecutable?
                   chmod +x $0
-                    sudo cp $0 /usr/local/bin/cuervo
+                    cp $0 /usr/local/bin/cuervo
                     sudo apt-get install pv || sudo pacman -Syy pv > /dev/null
-                    # export PATH=$PATH:$PWD
                     clear;
                     echo -e "${TURQUOISECOLOR}[!] Script instalado... \n ahora puedes invocarlo ${_END}\n ${GRAYCOLOR}escribiendo:   cuervo  )${_END}" | pv -qL 20
                     exit 1;
